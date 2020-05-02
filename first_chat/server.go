@@ -29,9 +29,13 @@ func main() {
 			fmt.Println("conn Read err, ", err)
 			continue
 		}
-
-		// 第四步，发送响应包
 		msg := string(buffer[:recvNum])
 		fmt.Println("recv msg : ", msg)
+
+		// 第四步，发送响应包
+		if _, err = conn.Write([]byte("world")); err != nil {
+			fmt.Println("conn Write error, ", err)
+		}
+
 	}
 }
