@@ -1,4 +1,4 @@
-package first_chat
+package main
 
 import (
 	"fmt"
