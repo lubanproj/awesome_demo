@@ -15,6 +15,12 @@ func main() {
 	for {
 		// 第二步，获取一个连接
 		conn, err := lis.Accept()
+
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+
 		defer conn.Close()
 
 		if err != nil {
