@@ -25,16 +25,17 @@ func main() {
 		}
 
 
-		go handleConnV3(conn)
+		go handleConnV4(conn)
 	}
 
 }
 
-func handleConnV3(conn net.Conn) {
+func handleConnV4(conn net.Conn) {
 
 	for {
-		buffer := make([]byte, 1024)
-		recvNum , err := conn.Read(buffer)
+		// 修改 conn.Read 为 io.ReadFull
+		buffer := make([]byte, 5)
+		recvNum , err := io.ReadFull(conn, buffer)
 		if err == io.EOF {
 			// client 连接关闭
 			break

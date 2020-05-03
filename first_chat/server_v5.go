@@ -6,6 +6,8 @@ import (
 	"net"
 )
 
+var buffer = make([]byte, 1024)
+
 func main() {
 	lis, err := net.Listen("tcp", "127.0.0.1:8000")
 	if err != nil {
@@ -25,15 +27,14 @@ func main() {
 		}
 
 
-		go handleConnV3(conn)
+		go handleConnV5(conn)
 	}
 
 }
 
-func handleConnV3(conn net.Conn) {
+func handleConnV5(conn net.Conn) {
 
 	for {
-		buffer := make([]byte, 1024)
 		recvNum , err := conn.Read(buffer)
 		if err == io.EOF {
 			// client 连接关闭
