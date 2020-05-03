@@ -48,6 +48,8 @@ func handleConnV2(conn net.Conn) {
 		msg := string(buffer[:recvNum])
 		fmt.Println("recv from client: ",msg)
 
+		handler()
+
 		conn.Write([]byte("world"))
 	}
 

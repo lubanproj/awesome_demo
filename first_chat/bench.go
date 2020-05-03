@@ -8,8 +8,8 @@ import (
 	"time"
 )
 
-var concurrency = flag.Int64("concurrency", 5, "concurrency")
-var total = flag.Int64("total", 5000, "total requests")
+var concurrency = flag.Int64("concurrency", 20, "concurrency")
+var total = flag.Int64("total", 2000, "total requests")
 
 func main() {
 	flag.Parse()

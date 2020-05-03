@@ -8,10 +8,15 @@ import (
 func call() (string, error) {
 	// 第一步，建立连接
 	conn, err := net.Dial("tcp", "127.0.0.1:8000")
-	defer conn.Close()
 	if err != nil {
 		return "", err
 	}
+
+	defer func() {
+		if conn != nil {
+			conn.Close()
+		}
+	}()
 
 	// 第二步，发送请求包
 	if _, err := conn.Write([]byte("hello")); err != nil {
